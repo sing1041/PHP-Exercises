@@ -8,14 +8,18 @@ Declare and assign the indexed array with your favourite food
 (at least 4 array elements). Name the array food.
 */
 
-$food = ["Noodles", "Dosa", "Fries", "Burger"];
+$food = ["Noodles", "Dosa", "Fries", "Ice Cream"];
 
 /*
 Print every array element in a new line.
 */
+
+$size = sizeOf($food);
     
-echo "<br>";
-print_r($food);
+for($i=0; $i<$size; $i++)
+{
+    echo $food[$i]."<br>";
+}
 
 // task separator
 echo "<hr style=\"margin 1rem 0\">";
@@ -33,14 +37,12 @@ Print the array elements from the previous exercise in unordered list.
 </ul>
 */
 
-echo "<ul>";
-    echo "<li>$food[0]</li>";
-    echo "<li>$food[1]</li>";
-    echo "<li>$food[2]</li>";
-    echo "<li>$food[3]</li>"; 
+echo "<ul>";  
+for($i=0; $i<$size; $i++)
+{
+    echo"<li>".$food[$i]."</li>";
+}
 echo "</ul>";
-
-
 
 
 // task separator
@@ -55,11 +57,10 @@ Every array element of food becomes the key of food_assoc.
 Every key of food_assoc has the value that describes the type of food (salad, main course or dessert).
 */
 
-$food_assoc = ["Snacks" => "Noodles",
-               "MainCourse" => "Dosa",
-               "Starter" => "Fries",
-               "Desert" => "Ice Cream"  
-];
+$food_assoc = ["Noodles" => "Snacks",
+               "Dosa" => "Main Course",
+               "Fries" => "Starter",
+               "Ice Cream" => "Desert"];
 
 /*
 Print every food and type in the separate lines so it renders like this:
@@ -67,14 +68,10 @@ pizza | main counrse
 cheesesake | desert 
 */
 
-echo $food_assoc["Snacks"]; echo " | Snacks";
-echo "<br>";
-echo $food_assoc["MainCourse"]; echo " | Main Course";
-echo "<br>";
-echo $food_assoc["Starter"]; echo " | Starter";
-echo "<br>";
-echo $food_assoc["Desert"]; echo " | Desert";
-
+foreach($food_assoc as $key => $value)
+{   
+    echo $key."  |  ".$value."<br>";
+}
 
 
 // task separator
@@ -99,31 +96,23 @@ Every key of food_assoc (pizza, cheesecake) will now have the value that is asso
 and carries the information about the type and origin
 */
 
-$food_assoc = ["Snacks" => "Noodles",
-               "MainCourse" => "Dosa",
-               "Starter" => "Fries",
-               "Desert" => "Ice Cream"  
-];
-$origin = ["Snacks" => "Chinese",
-            "MainCourse" => "South Indian",
-            "Starter" => "French",
-            "Desert" => "American"  
-];
-
+$food_assoc = ["Noodles" => ["type"=>"Snacks", "origin"=>"China"],
+               "Dosa" => ["type"=>"Main Course", "origin"=>"South India"],
+               "Fries" => ["type"=>"Starter", "origin"=>"France"],
+               "Ice Cream" => ["type"=>"Desert", "origin"=>"America"]];
+    
+    
 /*
 Print every food, type and origin in the separate lines so it renders like this:
 pizza | main counrse | Italy
 cheesesake | desert | Greece
 */
+               
+foreach($food_assoc as $key => $value)
+{   
+    echo $key."  |  ".$value['type']."  |  ".$value['origin']."<br>";
+}
 
-    echo $food_assoc["Snacks"]; echo " | Snacks | "; echo $origin["Snacks"];
-    echo "<br>";
-    echo $food_assoc["MainCourse"]; echo " | Main Course | "; echo $origin["MainCourse"];
-    echo "<br>";
-    echo $food_assoc["Starter"]; echo " | Starter| "; echo $origin["Starter"];
-    echo "<br>";
-    echo $food_assoc["Desert"]; echo " | Desert | "; echo $origin["Desert"];
-    echo "<br>";
 
 
 
@@ -154,5 +143,25 @@ Print the array from task 4 in html table:
   </tr>
 </table>
 */
+
+echo "<table>
+    <tr>
+        <th>food</th>
+        <th>type</th>
+        <th>origin</th>
+    </tr>";
+
+    
+    
+foreach($food_assoc as $key => $value)
+{   
+    echo "<tr><td>" .$key."</td><td>".$value['type']."</td><td>".$value['origin']."</td></tr>";
+        
+}
+echo "</table>";
+    
+
+    
+    
 
 ?>
