@@ -1,9 +1,18 @@
+<?php
 /*
 +---+
 | 1 |
 +---+
 Use while-loop to print the numbers 1 to 10.
 */
+
+$i = 0;
+
+while($i <= 10)
+{
+    echo $i. " <br>";         
+    $i++;
+}
 
 
 
@@ -20,6 +29,9 @@ to create array of numbers 5 to 100 with the step 5
 (example: 5, 10, 15, ...)
 */
 
+$range = range(5,100,5);
+
+
 /*
 Use for-loop and if-statement to print all odd numbers.
 
@@ -35,6 +47,13 @@ for example:
 
 
 
+foreach ($range as $value)
+{
+     if($value % 2 != 0)
+     {
+         echo $value."<br>";
+     }
+}
 
 // task separator
 echo "<hr style=\"margin 1rem 0\">";
@@ -47,19 +66,41 @@ Declare and assign the indexed array with your favourite food
 (at least 4 array elements). Name the array food.
 */
 
+$food = ["Noodles", "Dosa", "Fries", "Ice Cream"];
+
+
 /*
+
 Use while-loop to print array elements (every food in a new row).
 */
+
+$i = 0;
+
+while($i <= sizeOf($food))
+{
+    echo $food[$i]."<br>";
+    $i++;
+}
 
 /*
 Use for-loop to print array elements (every food in a new row).
 */
 
+$size = sizeOf($food);
+    
+for($i=0; $i<$size; $i++)
+{
+    echo $food[$i]."<br>";
+}
+
 /*
 Use foreach-loop to print array elements (every food in a new row).
 */
 
-
+foreach($food as $dish)
+{
+     echo $dish."<br>"; 
+}
 
 
 // task separator
@@ -76,6 +117,13 @@ After looping, you need to print the closing list-tag </ul>
 */
 
 
+
+echo "<ul>";  
+for($i=0; $i<$size; $i++)
+{
+    echo"<li>".$food[$i]."</li>";
+}
+echo "</ul>";
 
 
 // task separator
@@ -105,10 +153,23 @@ Every key of food_assoc (pizza, cheesecake) will now have the value that is asso
 and carries the information about the type and origin.
 */
 
+$food_assoc = ["Noodles" => "Snacks",
+               "Dosa" => "Main Course",
+               "Fries" => "Starter",
+               "Ice Cream" => "Desert"];
+
+
 /*
 Loop through $food_assoc and use print_r() to print the entire meal course 
 (entire array that includes type and origin).
 */
+
+foreach($food_assoc as $item)
+{
+    echo "<pre>";
+    print_r($item);
+    echo "</pre>";
+}
 
 /*
 Loop through $food_assoc and print the meal names (keys of $food_assoc)
